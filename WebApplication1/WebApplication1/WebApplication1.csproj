@@ -236,9 +236,23 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Domain\Country.cs" />
+    <Compile Include="Domain\Creature\Monster.cs" />
+    <Compile Include="Domain\Creature\Player.cs" />
+    <Compile Include="Domain\Creature\Animal.cs" />
+    <Compile Include="Domain\Creature\Creature.cs" />
     <Compile Include="Domain\Faction.cs" />
     <Compile Include="Domain\Interfaces\IActivatable.cs" />
     <Compile Include="Domain\Interfaces\IDbEntity.cs" />
+    <Compile Include="Domain\Interfaces\IInventory.cs" />
+    <Compile Include="Domain\Items\Item.cs" />
+    <Compile Include="Domain\Items\Potion.cs" />
+    <Compile Include="Domain\Items\Weapon.cs" />
+    <Compile Include="Domain\Locations\Building.cs" />
+    <Compile Include="Domain\Locations\City.cs" />
+    <Compile Include="Domain\Locations\Dungeon.cs" />
+    <Compile Include="Domain\Locations\Location.cs" />
+    <Compile Include="Domain\Locations\Road.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
