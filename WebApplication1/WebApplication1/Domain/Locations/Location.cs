@@ -9,11 +9,11 @@ using WebApplication1.Domain.Items;
 
 namespace WebApplication1.Domain.Locations
 {
-    public class Location : IActivatable, IDbEntity, IInventory
+    public class Location : IActivatable, IDbEntity//, IInventory
     {
         public int Id { get; set; }
         public bool Active{ get; set;}
-        public virtual ICollection<Item> Items { get; set; }
+        //public virtual ICollection<Item> Items { get; set; }
 
         [Required]
         public string Name { get; set; }
