@@ -2,39 +2,37 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using WebApplication1.Domain.Creature;
+using WebApplication1.Domain.Items;
 
 namespace WebApplication1.Infrastructure
 {
-    public static class CreatureRepo
+    public static class ItemRepo
     {
-
-
-        static CreatureRepo()
+        static ItemRepo()
         {
         }
 
-        public static bool HasCreature(int id)
+        public static bool HasItem(int id)
         {
             throw new NotImplementedException();
         }
 
-        public static bool AddCreature(Creature newCreature)
+        public static bool AddItem(Item newItem)
         {
             throw new NotImplementedException();
         }
 
-        public static bool UpdateCreature(Creature alteredCreature)
+        public static bool UpdateItem(Item alteredItem)
         {
             throw new NotImplementedException();
         }
 
-        public static bool DeleteCreature(int id)
+        public static bool DeleteItem(int id)
         {
             throw new NotImplementedException();
         }
 
-        public static Creature GetCreature(int id)
+        public static Item GetItem(int id)
         {
             throw new NotImplementedException();
         }
