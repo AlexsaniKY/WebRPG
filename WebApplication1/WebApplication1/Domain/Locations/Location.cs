@@ -20,7 +20,7 @@ namespace WebApplication1.Domain.Locations
 
         [ForeignKey("ParentCountry")]
         public int CountryId { get; set; }
-        public virtual Country ParentCountry { get; set; }
+        //public virtual Country ParentCountry { get; set; }
 
     }
 }
