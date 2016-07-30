@@ -31,7 +31,8 @@ namespace WebApplication1.Domain.Creature
         public int FactionId { get; set; }
         public virtual Faction ParentFaction { get; set; }
 
-        public Creature(int id, bool active, string name, int hp, int wieldeditemid, int factionid ) {
+        public Creature(int id, bool active, string name, int hp, int wieldeditemid, int factionid )
+        {
             Id = id;
             Active = active;
             Name = name;
