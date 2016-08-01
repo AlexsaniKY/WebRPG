@@ -21,14 +21,16 @@ namespace WebApplication1.Domain.Creature
         [Required]
         public abstract string CreatureType { get; }
 
-        [ForeignKey("WeildedItem")]
+        
         public int WieldedItemId { get; set; }
+        [ForeignKey("WieldedItemId")]
         public virtual Item WieldedItem { get; set; }
 
         public int HP { get; set; }
 
-        [ForeignKey("ParentFaction")]
+        
         public int FactionId { get; set; }
+        [ForeignKey("FactionId")]
         public virtual Faction ParentFaction { get; set; }
 
         public Creature(int id, bool active, string name, int hp, int wieldeditemid, int factionid )

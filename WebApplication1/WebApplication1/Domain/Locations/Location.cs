@@ -18,8 +18,8 @@ namespace WebApplication1.Domain.Locations
         [Required]
         public string Name { get; set; }
 
-        [ForeignKey("ParentCountry")]
-        public int CountryId { get; set; }
+        //[ForeignKey("ParentCountry")]
+        //public int CountryId { get; set; }
         //public virtual Country ParentCountry { get; set; }
 
     }
