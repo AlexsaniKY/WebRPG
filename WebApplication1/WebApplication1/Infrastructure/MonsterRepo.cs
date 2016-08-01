@@ -1,25 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using WebApplication1.Domain.Creature;
 
 namespace WebApplication1.Infrastructure
 {
-    public static class CreatureRepo
+    public class MonsterRepo: GenericRepository<Monster>
     {
-
-
-        static CreatureRepo()
+        public MonsterRepo(DbContext db) : base(db)
         {
         }
 
-        public static bool HasCreature(int id)
+        public static bool HasMonster(int id)
         {
             throw new NotImplementedException();
         }
 
-        public static bool AddCreature(Creature newCreature)
+        public static bool AddMonster(Monster newMonster)
         {
             throw new NotImplementedException();
         }

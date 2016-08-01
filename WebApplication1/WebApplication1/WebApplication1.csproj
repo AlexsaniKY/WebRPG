@@ -257,7 +257,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\AppDbContext.cs" />
-    <Compile Include="Infrastructure\CreatureRepo.cs" />
+    <Compile Include="Infrastructure\MonsterRepo.cs" />
     <Compile Include="Infrastructure\FactionRepo.cs" />
     <Compile Include="Infrastructure\GenericRepository.cs" />
     <Compile Include="Infrastructure\ItemRepo.cs" />
