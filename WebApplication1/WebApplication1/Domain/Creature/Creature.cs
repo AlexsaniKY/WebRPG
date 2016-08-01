@@ -22,9 +22,9 @@ namespace WebApplication1.Domain.Creature
         public abstract string CreatureType { get; }
 
         
-        public int WieldedItemId { get; set; }
-        [ForeignKey("WieldedItemId")]
-        public virtual Item WieldedItem { get; set; }
+        public int WieldedWeaponId { get; set; }
+        [ForeignKey("WieldedWeaponId")]
+        public virtual Weapon WieldedWeapon { get; set; }
 
         public int HP { get; set; }
 
@@ -34,13 +34,13 @@ namespace WebApplication1.Domain.Creature
         public virtual Faction ParentFaction { get; set; }
 
         public Creature() { }
-        public Creature(int id, bool active, string name, int hp, int wieldeditemid, int factionid )
+        public Creature(int id, bool active, string name, int hp, int wieldedweaponid, int factionid )
         {
             Id = id;
             Active = active;
             Name = name;
             HP = hp;
-            WieldedItemId = wieldeditemid;
+            WieldedWeaponId = wieldedweaponid;
             FactionId = factionid;
         }
     }

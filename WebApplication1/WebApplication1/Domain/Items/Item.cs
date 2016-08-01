@@ -14,5 +14,12 @@ namespace WebApplication1.Domain.Items
 
         [Required]
         public string Name { get; set; }
+        public Item() { }
+        public Item(int id, bool active, string name)
+        {
+            Id = id;
+            Active = active;
+            Name = name;
+        }
     }
 }

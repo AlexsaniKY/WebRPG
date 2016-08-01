@@ -261,8 +261,9 @@
     <Compile Include="Infrastructure\MonsterRepo.cs" />
     <Compile Include="Infrastructure\FactionRepo.cs" />
     <Compile Include="Infrastructure\GenericRepository.cs" />
-    <Compile Include="Infrastructure\ItemRepo.cs" />
     <Compile Include="Infrastructure\LocationRepo.cs" />
+    <Compile Include="Infrastructure\PlayerRepo.cs" />
+    <Compile Include="Infrastructure\WeaponRepo.cs" />
     <Compile Include="Migrations\201608010822486_initialmigration.cs" />
     <Compile Include="Migrations\201608010822486_initialmigration.Designer.cs">
       <DependentUpon>201608010822486_initialmigration.cs</DependentUpon>
@@ -271,6 +272,10 @@
     <Compile Include="Migrations\201608011857298_creatureconstructors.Designer.cs">
       <DependentUpon>201608011857298_creatureconstructors.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608012001103_created dtos and changed creature%27s WieldedItem to WieldedWeapon.cs" />
+    <Compile Include="Migrations\201608012001103_created dtos and changed creature%27s WieldedItem to WieldedWeapon.Designer.cs">
+      <DependentUpon>201608012001103_created dtos and changed creature%27s WieldedItem to WieldedWeapon.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -278,7 +283,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
-    <Compile Include="Services\CreatureServices.cs" />
+    <Compile Include="Services\DTO\PlayerDTO.cs" />
+    <Compile Include="Services\DTO\WeaponDTO.cs" />
+    <Compile Include="Services\PlayerServices.cs" />
+    <Compile Include="Services\WeaponServices.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -365,6 +373,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201608011857298_creatureconstructors.resx">
       <DependentUpon>201608011857298_creatureconstructors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608012001103_created dtos and changed creature%27s WieldedItem to WieldedWeapon.resx">
+      <DependentUpon>201608012001103_created dtos and changed creature%27s WieldedItem to WieldedWeapon.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

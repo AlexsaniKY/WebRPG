@@ -8,17 +8,19 @@ using System.Web;
 using System.Web.Mvc;
 using WebApplication1.Domain.Creature;
 using WebApplication1.Infrastructure;
+using WebApplication1.Services;
 
 namespace WebApplication1.Controllers
 {
     public class PlayersController : Controller
     {
+        internal PlayerServices playerservices = new PlayerServices();
         private AppDbContext db = AppDbContext.Create();
 
         // GET: Players
         public ActionResult Index()
         {
-            var players = db.Players.Include(p => p.ParentFaction).Include(p => p.WieldedItem);
+            var players = db.Players.Include(p => p.ParentFaction).Include(p => p.WieldedWeapon);
             return View(players.ToList());
         }
 
@@ -29,7 +31,8 @@ namespace WebApplication1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Player player = db.Players.Find(id);
+            Player player = new Player(playerservices.GetPlayer(id ?? default(int)));
+            //Player player = db.Players.Find(id);
             if (player == null)
             {
                 return HttpNotFound();
@@ -60,7 +63,7 @@ namespace WebApplication1.Controllers
             }
 
             ViewBag.FactionId = new SelectList(db.Factions, "Id", "Name", player.FactionId);
-            ViewBag.WieldedItemId = new SelectList(db.Items, "Id", "Name", player.WieldedItemId);
+            ViewBag.WieldedItemId = new SelectList(db.Items, "Id", "Name", player.WieldedWeaponId);
             return View(player);
         }
 
@@ -77,7 +80,7 @@ namespace WebApplication1.Controllers
                 return HttpNotFound();
             }
             ViewBag.FactionId = new SelectList(db.Factions, "Id", "Name", player.FactionId);
-            ViewBag.WieldedItemId = new SelectList(db.Items, "Id", "Name", player.WieldedItemId);
+            ViewBag.WieldedItemId = new SelectList(db.Items, "Id", "Name", player.WieldedWeaponId);
             return View(player);
         }
 
@@ -95,7 +98,7 @@ namespace WebApplication1.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.FactionId = new SelectList(db.Factions, "Id", "Name", player.FactionId);
-            ViewBag.WieldedItemId = new SelectList(db.Items, "Id", "Name", player.WieldedItemId);
+            ViewBag.WieldedItemId = new SelectList(db.Items, "Id", "Name", player.WieldedWeaponId);
             return View(player);
         }
 
