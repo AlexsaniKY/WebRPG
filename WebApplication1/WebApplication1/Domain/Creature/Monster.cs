@@ -7,6 +7,7 @@ namespace WebApplication1.Domain.Creature
 {
     public class Monster: Creature
     {
+        public Monster() : base() { }
         public Monster(int id, bool active, string name, int hp, int wieldeditemid, int factionid) : base(id, active, name, hp, wieldeditemid, factionid)
         {
         }

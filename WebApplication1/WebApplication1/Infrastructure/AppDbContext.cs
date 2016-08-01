@@ -12,7 +12,7 @@ namespace WebApplication1.Infrastructure
 {
     public class AppDbContext: DbContext
     {
-        public AppDbContext() : base("AppDbContext") { }
+        public AppDbContext() : base("AppDbContext") { Database.SetInitializer<AppDbContext>(null); }
 
         public static AppDbContext Create()
         {
@@ -20,7 +20,7 @@ namespace WebApplication1.Infrastructure
         }
         //Creatures
         DbSet<Monster> Monsters { get; set; }
-        DbSet<Player>Players { get; set; }
+        public DbSet<Player>Players { get; set; }
         //Items
         DbSet<Potion>Potions { get; set; }
         DbSet<Weapon>Weapons { get; set; }
@@ -28,7 +28,12 @@ namespace WebApplication1.Infrastructure
         DbSet <City> Cities { get; set; }
         DbSet<Road> Roads { get; set; }
 
-        DbSet<Faction> Factions { get; set; }
+        public DbSet<Faction> Factions { get; set; }
 
+        //public DbSet<Player> Players { get; set; }
+
+        //public System.Data.Entity.DbSet<WebApplication1.Domain.Faction> Factions { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication1.Domain.Items.Item> Items { get; set; }
     }
 }

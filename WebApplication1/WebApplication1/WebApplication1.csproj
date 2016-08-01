@@ -235,6 +235,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PlayersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Domain\Country.cs" />
     <Compile Include="Domain\Creature\Monster.cs" />
@@ -265,6 +266,10 @@
     <Compile Include="Migrations\201608010822486_initialmigration.cs" />
     <Compile Include="Migrations\201608010822486_initialmigration.Designer.cs">
       <DependentUpon>201608010822486_initialmigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608011857298_creatureconstructors.cs" />
+    <Compile Include="Migrations\201608011857298_creatureconstructors.Designer.cs">
+      <DependentUpon>201608011857298_creatureconstructors.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -337,6 +342,11 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Players\Create.cshtml" />
+    <Content Include="Views\Players\Delete.cshtml" />
+    <Content Include="Views\Players\Details.cshtml" />
+    <Content Include="Views\Players\Edit.cshtml" />
+    <Content Include="Views\Players\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -352,6 +362,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201608010822486_initialmigration.resx">
       <DependentUpon>201608010822486_initialmigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608011857298_creatureconstructors.resx">
+      <DependentUpon>201608011857298_creatureconstructors.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

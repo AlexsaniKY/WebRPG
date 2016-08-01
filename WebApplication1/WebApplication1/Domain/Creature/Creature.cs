@@ -33,6 +33,7 @@ namespace WebApplication1.Domain.Creature
         [ForeignKey("FactionId")]
         public virtual Faction ParentFaction { get; set; }
 
+        public Creature() { }
         public Creature(int id, bool active, string name, int hp, int wieldeditemid, int factionid )
         {
             Id = id;
