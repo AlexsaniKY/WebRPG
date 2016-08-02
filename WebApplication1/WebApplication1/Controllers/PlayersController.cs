@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using WebApplication1.Domain.Creature;
-using WebApplication1.Infrastructure;
 using WebApplication1.Services;
 
 namespace WebApplication1.Controllers
@@ -17,12 +11,11 @@ namespace WebApplication1.Controllers
         internal PlayerServices playerservices = new PlayerServices();
         internal FactionServices factionservices = new FactionServices();
         internal WeaponServices weaponservices = new WeaponServices();
-        private AppDbContext db = AppDbContext.Create();
 
         // GET: Players
         public ActionResult Index()
         {
-            var players = playerservices.EnumerateAll();
+            var players = playerservices.Enumerate();
             return View(players.ToList());
         }
 
@@ -33,7 +26,7 @@ namespace WebApplication1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Player player = playerservices.GetPlayerEntity(id ?? default(int));
+            Player player = playerservices.Get(id ?? default(int));
             if (player == null)
             {
                 return HttpNotFound();
@@ -58,7 +51,7 @@ namespace WebApplication1.Controllers
         {
             if (ModelState.IsValid)
             {
-                playerservices.AddPlayer(player);
+                playerservices.Add(player);
                 return RedirectToAction("Index");
             }
 
@@ -74,7 +67,7 @@ namespace WebApplication1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Player player = playerservices.GetPlayer(id ?? default(int));
+            Player player = playerservices.Get(id ?? default(int));
             if (player == null)
             {
                 return HttpNotFound();
@@ -93,7 +86,7 @@ namespace WebApplication1.Controllers
         {
             if (ModelState.IsValid)
             {
-                playerservices.UpdatePlayer(player);
+                playerservices.Update(player);
                 return RedirectToAction("Index");
             }
             ViewBag.FactionId = new SelectList(factionservices.EnumerateAll(), "Id", "Name", player.FactionId);
@@ -108,7 +101,7 @@ namespace WebApplication1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Player player = db.Players.Find(id);
+            Player player = playerservices.Get(id ?? default(int));
             if (player == null)
             {
                 return HttpNotFound();
@@ -121,19 +114,8 @@ namespace WebApplication1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Player player = db.Players.Find(id);
-            db.Players.Remove(player);
-            db.SaveChanges();
+            playerservices.Delete(id);
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }
