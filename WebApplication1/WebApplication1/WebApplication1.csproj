@@ -286,6 +286,7 @@
     <Compile Include="Services\DTO\PlayerDTO.cs" />
     <Compile Include="Services\DTO\WeaponDTO.cs" />
     <Compile Include="Services\FactionServices.cs" />
+    <Compile Include="Services\GenericServices.cs" />
     <Compile Include="Services\PlayerServices.cs" />
     <Compile Include="Services\WeaponServices.cs" />
     <Compile Include="Startup.cs" />
