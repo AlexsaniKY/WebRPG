@@ -51,10 +51,16 @@ namespace WebApplication1.Infrastructure
             return entity.Id;
         }
 
+        public void Update(T altered)
+        {
+            _db.Entry(altered).State = EntityState.Modified;
+        }
+
         public void Delete(int id)
         {
             Delete(Get(id).FirstOrDefault());
         }
+
         public void Delete(T entity)
         {
             entity.Active = false;

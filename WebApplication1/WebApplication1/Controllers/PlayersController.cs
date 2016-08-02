@@ -16,12 +16,13 @@ namespace WebApplication1.Controllers
     {
         internal PlayerServices playerservices = new PlayerServices();
         internal FactionServices factionservices = new FactionServices();
+        internal WeaponServices weaponservices = new WeaponServices();
         private AppDbContext db = AppDbContext.Create();
 
         // GET: Players
         public ActionResult Index()
         {
-            var players = db.Players.Include(p => p.ParentFaction).Include(p => p.WieldedWeapon);
+            var players = playerservices.EnumerateAll();
             return View(players.ToList());
         }
 
@@ -32,7 +33,7 @@ namespace WebApplication1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Player player = playerservices.GetPlayer(id ?? default(int));
+            Player player = playerservices.GetPlayerEntity(id ?? default(int));
             if (player == null)
             {
                 return HttpNotFound();
@@ -44,7 +45,7 @@ namespace WebApplication1.Controllers
         public ActionResult Create()
         {
             ViewBag.FactionId = new SelectList(factionservices.EnumerateAll(), "Id", "Name");
-            ViewBag.WieldedWeaponId = new SelectList(db.Items, "Id", "Name");
+            ViewBag.WieldedWeaponId = new SelectList(weaponservices.EnumerateAll(), "Id", "Name");
             return View();
         }
 
@@ -57,13 +58,12 @@ namespace WebApplication1.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Players.Add(player);
-                db.SaveChanges();
+                playerservices.AddPlayer(player);
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FactionId = new SelectList(db.Factions, "Id", "Name", player.FactionId);
-            ViewBag.WieldedWeaponId = new SelectList(db.Items, "Id", "Name", player.WieldedWeaponId);
+            ViewBag.FactionId = new SelectList(factionservices.EnumerateAll(), "Id", "Name", player.FactionId);
+            ViewBag.WieldedWeaponId = new SelectList(weaponservices.EnumerateAll(), "Id", "Name", player.WieldedWeaponId);
             return View(player);
         }
 
@@ -74,13 +74,13 @@ namespace WebApplication1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Player player = db.Players.Find(id);
+            Player player = playerservices.GetPlayer(id ?? default(int));
             if (player == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.FactionId = new SelectList(db.Factions, "Id", "Name", player.FactionId);
-            ViewBag.WieldedWeaponId = new SelectList(db.Items, "Id", "Name", player.WieldedWeaponId);
+            ViewBag.FactionId = new SelectList(factionservices.EnumerateAll(), "Id", "Name", player.FactionId);
+            ViewBag.WieldedWeaponId = new SelectList(weaponservices.EnumerateAll(), "Id", "Name", player.WieldedWeaponId);
             return View(player);
         }
 
@@ -93,12 +93,11 @@ namespace WebApplication1.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(player).State = EntityState.Modified;
-                db.SaveChanges();
+                playerservices.UpdatePlayer(player);
                 return RedirectToAction("Index");
             }
-            ViewBag.FactionId = new SelectList(db.Factions, "Id", "Name", player.FactionId);
-            ViewBag.WieldedWeaponId = new SelectList(db.Items, "Id", "Name", player.WieldedWeaponId);
+            ViewBag.FactionId = new SelectList(factionservices.EnumerateAll(), "Id", "Name", player.FactionId);
+            ViewBag.WieldedWeaponId = new SelectList(weaponservices.EnumerateAll(), "Id", "Name", player.WieldedWeaponId);
             return View(player);
         }
 

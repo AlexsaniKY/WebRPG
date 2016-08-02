@@ -18,6 +18,13 @@ namespace WebApplication1.Services
             _repo = new PlayerRepo(AppDbContext.Create());
             weaponservices = new WeaponServices();
         }
+        
+        public  Player GetPlayerEntity(int id)
+        {
+
+            var query = _repo.Get(id);
+            return (from p in query select p).FirstOrDefault();
+        }
 
         public Player GetPlayer(int id)
         {
@@ -39,5 +46,24 @@ namespace WebApplication1.Services
                     }
                     }).FirstOrDefault());
         }
+
+        public void UpdatePlayer(Player updatedplayer) {
+            _repo.Update(updatedplayer);
+            _repo.SaveChanges();
+        }
+
+        public void AddPlayer(Player newplayer)
+        {
+            _repo.Add(newplayer);
+            _repo.SaveChanges();
+        }
+
+        public void DeletePlayer(int id)
+        {
+            _repo.Delete(id);
+            _repo.SaveChanges();
+        }
+
+        public IEnumerable<Player> EnumerateAll() { return _repo.Enumerate(); }
     }
 }
