@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
@@ -24,12 +26,16 @@ namespace WebApplication1.Infrastructure
             _db = db;
         }
 
+        public IEnumerable<T> Enumerate() { return this.List().AsEnumerable(); }
+
         public IQueryable<T> List()
         {
             return from e in Table
                    where e.Active
                    select e;
         }
+
+        
 
         public IQueryable<T> Get(int id)
         {

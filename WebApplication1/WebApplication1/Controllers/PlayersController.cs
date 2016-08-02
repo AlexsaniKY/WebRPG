@@ -15,6 +15,7 @@ namespace WebApplication1.Controllers
     public class PlayersController : Controller
     {
         internal PlayerServices playerservices = new PlayerServices();
+        internal FactionServices factionservices = new FactionServices();
         private AppDbContext db = AppDbContext.Create();
 
         // GET: Players
@@ -31,8 +32,7 @@ namespace WebApplication1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Player player = new Player(playerservices.GetPlayer(id ?? default(int)));
-            //Player player = db.Players.Find(id);
+            Player player = playerservices.GetPlayer(id ?? default(int));
             if (player == null)
             {
                 return HttpNotFound();
@@ -43,7 +43,7 @@ namespace WebApplication1.Controllers
         // GET: Players/Create
         public ActionResult Create()
         {
-            ViewBag.FactionId = new SelectList(db.Factions, "Id", "Name");
+            ViewBag.FactionId = new SelectList(factionservices.EnumerateAll(), "Id", "Name");
             ViewBag.WieldedWeaponId = new SelectList(db.Items, "Id", "Name");
             return View();
         }

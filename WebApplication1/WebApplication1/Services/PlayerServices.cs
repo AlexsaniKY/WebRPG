@@ -19,10 +19,10 @@ namespace WebApplication1.Services
             weaponservices = new WeaponServices();
         }
 
-        public PlayerDTO GetPlayer(int id)
+        public Player GetPlayer(int id)
         {
             var query = _repo.Get(id);
-            return (from p in query
+            return new Player((from p in query
                     select new PlayerDTO()
                     {Id = p.Id,
                     Active = p.Active,
@@ -37,7 +37,7 @@ namespace WebApplication1.Services
                         Name = p.WieldedWeapon.Name,
                         Damage = p.WieldedWeapon.Damage
                     }
-                    }).FirstOrDefault();
+                    }).FirstOrDefault());
         }
     }
 }
