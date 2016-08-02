@@ -19,14 +19,14 @@ namespace WebApplication1.Infrastructure
             return new AppDbContext();
         }
         //Creatures
-        DbSet<Monster> Monsters { get; set; }
+        public DbSet<Monster> Monsters { get; set; }
         public DbSet<Player>Players { get; set; }
         //Items
-        DbSet<Potion>Potions { get; set; }
-        DbSet<Weapon>Weapons { get; set; }
+        public DbSet<Potion>Potions { get; set; }
+        public DbSet<Weapon>Weapons { get; set; }
         //Locations
-        DbSet <City> Cities { get; set; }
-        DbSet<Road> Roads { get; set; }
+        public DbSet <City> Cities { get; set; }
+        public DbSet<Road> Roads { get; set; }
 
         public DbSet<Faction> Factions { get; set; }
 

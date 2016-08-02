@@ -44,7 +44,7 @@ namespace WebApplication1.Controllers
         public ActionResult Create()
         {
             ViewBag.FactionId = new SelectList(db.Factions, "Id", "Name");
-            ViewBag.WieldedItemId = new SelectList(db.Items, "Id", "Name");
+            ViewBag.WieldedWeaponId = new SelectList(db.Items, "Id", "Name");
             return View();
         }
 
@@ -53,7 +53,7 @@ namespace WebApplication1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Active,Name,WieldedItemId,HP,FactionId")] Player player)
+        public ActionResult Create([Bind(Include = "Id,Active,Name,WieldedWeaponId,HP,FactionId")] Player player)
         {
             if (ModelState.IsValid)
             {
@@ -63,7 +63,7 @@ namespace WebApplication1.Controllers
             }
 
             ViewBag.FactionId = new SelectList(db.Factions, "Id", "Name", player.FactionId);
-            ViewBag.WieldedItemId = new SelectList(db.Items, "Id", "Name", player.WieldedWeaponId);
+            ViewBag.WieldedWeaponId = new SelectList(db.Items, "Id", "Name", player.WieldedWeaponId);
             return View(player);
         }
 
@@ -80,7 +80,7 @@ namespace WebApplication1.Controllers
                 return HttpNotFound();
             }
             ViewBag.FactionId = new SelectList(db.Factions, "Id", "Name", player.FactionId);
-            ViewBag.WieldedItemId = new SelectList(db.Items, "Id", "Name", player.WieldedWeaponId);
+            ViewBag.WieldedWeaponId = new SelectList(db.Items, "Id", "Name", player.WieldedWeaponId);
             return View(player);
         }
 
@@ -89,7 +89,7 @@ namespace WebApplication1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Active,Name,WieldedItemId,HP,FactionId")] Player player)
+        public ActionResult Edit([Bind(Include = "Id,Active,Name,WieldedWeaponId,HP,FactionId")] Player player)
         {
             if (ModelState.IsValid)
             {
@@ -98,7 +98,7 @@ namespace WebApplication1.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.FactionId = new SelectList(db.Factions, "Id", "Name", player.FactionId);
-            ViewBag.WieldedItemId = new SelectList(db.Items, "Id", "Name", player.WieldedWeaponId);
+            ViewBag.WieldedWeaponId = new SelectList(db.Items, "Id", "Name", player.WieldedWeaponId);
             return View(player);
         }
 
