@@ -89,8 +89,8 @@ namespace WebApplication1.Controllers
                 playerservices.Update(player);
                 return RedirectToAction("Index");
             }
-            ViewBag.FactionId = new SelectList(factionservices.EnumerateAll(), "Id", "Name", player.FactionId);
-            ViewBag.WieldedWeaponId = new SelectList(weaponservices.EnumerateAll(), "Id", "Name", player.WieldedWeaponId);
+            ViewBag.FactionId = new SelectList(factionservices.Enumerate(), "Id", "Name", player.FactionId);
+            ViewBag.WieldedWeaponId = new SelectList(weaponservices.Enumerate(), "Id", "Name", player.WieldedWeaponId);
             return View(player);
         }
 

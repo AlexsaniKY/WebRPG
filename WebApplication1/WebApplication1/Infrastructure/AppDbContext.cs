@@ -21,19 +21,13 @@ namespace WebApplication1.Infrastructure
         //Creatures
         public DbSet<Monster> Monsters { get; set; }
         public DbSet<Player>Players { get; set; }
-        //Items
-        public DbSet<Potion>Potions { get; set; }
-        public DbSet<Weapon>Weapons { get; set; }
+
         //Locations
         public DbSet <City> Cities { get; set; }
         public DbSet<Road> Roads { get; set; }
 
         public DbSet<Faction> Factions { get; set; }
 
-        //public DbSet<Player> Players { get; set; }
-
-        //public System.Data.Entity.DbSet<WebApplication1.Domain.Faction> Factions { get; set; }
-
-        public System.Data.Entity.DbSet<WebApplication1.Domain.Items.Item> Items { get; set; }
+        public DbSet<Item> Items { get; set; }
     }
 }
