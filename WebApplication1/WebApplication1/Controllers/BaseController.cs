@@ -8,10 +8,11 @@ namespace WebApplication1.Controllers
 {
     public class BaseController : Controller
     {
-        // GET: Base
-        public ActionResult Index()
+        public ActionResult Error404()
         {
-            return View();
+            Response.StatusCode = 404;
+            Response.TrySkipIisCustomErrors = true;
+            return View("Error");
         }
     }
 }
