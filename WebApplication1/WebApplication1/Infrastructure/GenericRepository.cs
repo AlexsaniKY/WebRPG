@@ -26,16 +26,22 @@ namespace WebApplication1.Infrastructure
             _db = db;
         }
 
-        public IEnumerable<T> Enumerate() { return this.List().AsEnumerable(); }
+        public IEnumerable<T> Enumerate()
+        {
+            return this.GetAll().AsEnumerable();
+        }
 
-        public IQueryable<T> List()
+        public List<T> List()
+        {
+            return GetAll().ToList();
+        }
+
+        public IQueryable<T> GetAll()
         {
             return from e in Table
                    where e.Active
                    select e;
         }
-
-        
 
         public IQueryable<T> Get(int id)
         {

@@ -17,15 +17,15 @@ namespace WebApplication1.Services
             return (from t in query select t).FirstOrDefault();
         }
 
-        public void Update(T alteredentity)
+        public void Update(T alteredEntity)
         {
-            _repo.Update(alteredentity);
+            _repo.Update(alteredEntity);
             _repo.SaveChanges();
         }
 
-        public void Add(T newentity)
+        public void Add(T newEntity)
         {
-            _repo.Add(newentity);
+            _repo.Add(newEntity);
             _repo.SaveChanges();
         }
 
@@ -35,6 +35,20 @@ namespace WebApplication1.Services
             _repo.SaveChanges();
         }
 
-        public IEnumerable<T> Enumerate() { return _repo.Enumerate(); }
+        public void Delete(T removeEntity)
+        {
+            _repo.Delete(removeEntity);
+            _repo.SaveChanges();
+        }
+
+        public List<T> List()
+        {
+            return _repo.List();
+        }
+
+        public IEnumerable<T> Enumerate()
+        {
+            return _repo.Enumerate();
+        }
     }
 }

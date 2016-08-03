@@ -37,8 +37,8 @@ namespace WebApplication1.Controllers
         // GET: Players/Create
         public ActionResult Create()
         {
-            ViewBag.FactionId = new SelectList(factionservices.EnumerateAll(), "Id", "Name");
-            ViewBag.WieldedWeaponId = new SelectList(weaponservices.EnumerateAll(), "Id", "Name");
+            ViewBag.FactionId = new SelectList(factionservices.Enumerate(), "Id", "Name");
+            ViewBag.WieldedWeaponId = new SelectList(weaponservices.Enumerate(), "Id", "Name");
             return View();
         }
 
@@ -55,8 +55,8 @@ namespace WebApplication1.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FactionId = new SelectList(factionservices.EnumerateAll(), "Id", "Name", player.FactionId);
-            ViewBag.WieldedWeaponId = new SelectList(weaponservices.EnumerateAll(), "Id", "Name", player.WieldedWeaponId);
+            ViewBag.FactionId = new SelectList(factionservices.Enumerate(), "Id", "Name", player.FactionId);
+            ViewBag.WieldedWeaponId = new SelectList(weaponservices.Enumerate(), "Id", "Name", player.WieldedWeaponId);
             return View(player);
         }
 
@@ -72,8 +72,8 @@ namespace WebApplication1.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.FactionId = new SelectList(factionservices.EnumerateAll(), "Id", "Name", player.FactionId);
-            ViewBag.WieldedWeaponId = new SelectList(weaponservices.EnumerateAll(), "Id", "Name", player.WieldedWeaponId);
+            ViewBag.FactionId = new SelectList(factionservices.Enumerate(), "Id", "Name", player.FactionId);
+            ViewBag.WieldedWeaponId = new SelectList(weaponservices.Enumerate(), "Id", "Name", player.WieldedWeaponId);
             return View(player);
         }
 
