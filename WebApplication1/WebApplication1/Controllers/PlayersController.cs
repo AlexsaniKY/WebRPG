@@ -10,7 +10,7 @@ namespace WebApplication1.Controllers
     {
         internal PlayerServices playerservices = new PlayerServices();
         internal FactionServices factionservices = new FactionServices();
-        internal WeaponServices weaponservices = new WeaponServices();
+        internal ItemServices weaponservices = new ItemServices();
 
         // GET: Players
         public ActionResult Index()

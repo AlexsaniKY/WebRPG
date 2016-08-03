@@ -9,11 +9,11 @@ using WebApplication1.Services.DTO;
 
 namespace WebApplication1.Services
 {
-    public class WeaponServices: GenericServices<Weapon>
+    public class ItemServices: GenericServices<Weapon>
     {
-        public WeaponServices()
+        public ItemServices()
         {
-            _repo = new WeaponRepo(AppDbContext.Create());
+            _repo = new ItemRepo(AppDbContext.Create());
         }
 
         //public Weapon GetWeapon(int id)

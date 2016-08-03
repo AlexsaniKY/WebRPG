@@ -259,10 +259,11 @@
     </Compile>
     <Compile Include="Infrastructure\AppDbContext.cs" />
     <Compile Include="Infrastructure\FactionRepo.cs" />
+    <Compile Include="Infrastructure\LocationRepo.cs" />
     <Compile Include="Infrastructure\MonsterRepo.cs" />
     <Compile Include="Infrastructure\GenericRepository.cs" />
     <Compile Include="Infrastructure\PlayerRepo.cs" />
-    <Compile Include="Infrastructure\WeaponRepo.cs" />
+    <Compile Include="Infrastructure\ItemRepo.cs" />
     <Compile Include="Migrations\201608010822486_initialmigration.cs" />
     <Compile Include="Migrations\201608010822486_initialmigration.Designer.cs">
       <DependentUpon>201608010822486_initialmigration.cs</DependentUpon>
@@ -287,8 +288,10 @@
     <Compile Include="Services\DTO\WeaponDTO.cs" />
     <Compile Include="Services\FactionServices.cs" />
     <Compile Include="Services\GenericServices.cs" />
+    <Compile Include="Services\LocationServices.cs" />
+    <Compile Include="Services\MonsterServices.cs" />
     <Compile Include="Services\PlayerServices.cs" />
-    <Compile Include="Services\WeaponServices.cs" />
+    <Compile Include="Services\ItemServices.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
