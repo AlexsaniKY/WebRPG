@@ -6,13 +6,13 @@ using System.Web.Mvc;
 
 namespace WebApplication1.Controllers
 {
-    public class BaseController : Controller
+    public class ErrorController : Controller
     {
         public ActionResult Error404()
         {
             Response.StatusCode = 404;
             Response.TrySkipIisCustomErrors = true;
-            return View("Error");
+            return View();
         }
     }
 }
